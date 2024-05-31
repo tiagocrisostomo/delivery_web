@@ -1,8 +1,12 @@
+import 'dart:async';
 import 'package:delivery_web/data/colors/colors.dart';
+import 'package:delivery_web/data/http/http_client.dart';
 import 'package:delivery_web/data/strings/strings.dart';
+import 'package:delivery_web/repository/orders_repository.dart';
+import 'package:delivery_web/screens/order.dart';
 import 'package:delivery_web/settings/settings.dart';
+import 'package:delivery_web/store/orders_store.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -12,6 +16,25 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final OrdersStore store = OrdersStore(
+    repository: OrdersRepository(
+      client: HttpClient(),
+    ),
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    scheduleMicrotask(() async {
+      // await store.getOrders();
+    });
+
+    const secs = Duration(seconds: 30);
+    Timer.periodic(secs, (timer) async {
+      // await store.getOrders();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,148 +135,251 @@ class _HomeState extends State<Home> {
 
   _bodyData() {
     Size size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          Padding(
-            padding:
-                const EdgeInsets.only(top: 2, bottom: 2, right: 2, left: 2),
-            child: Container(
-              decoration: BoxDecoration(
-                color: cor.col1Color,
-              ),
-              width: size.width * 0.1986,
-              child: Column(
-                children: [
-                  const Row(children: [Icon(Icons.search_rounded)]),
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Text(
-                      '${texto.col1} (${0})',
-                      style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
-                  ]),
-                  Divider(
-                    color: cor.backgroundColor,
-                    thickness: 2.0,
-                  ),
-                  //OS DADOS VIRÃO AQUI
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 2, bottom: 2, right: 2),
-            child: Container(
-              decoration: BoxDecoration(
-                color: cor.col2Color,
-              ),
-              width: size.width * 0.1986,
-              child: Column(
-                children: [
-                  const Row(children: [Icon(Icons.search_rounded)]),
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Text(
-                      '${texto.col2} (${0})',
-                      style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
-                  ]),
-                  Divider(
-                    color: cor.backgroundColor,
-                    thickness: 2.0,
-                  ),
-                  //OS DADOS VIRÃO AQUI
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 2,
-              bottom: 2,
-              right: 2,
-            ),
-            child: Container(
-              width: size.width * 0.1986,
-              decoration: BoxDecoration(
+    return AnimatedBuilder(
+        animation: Listenable.merge([
+          store.isLoading,
+          store.erro,
+          store.state,
+        ]),
+        builder: (conext, child) {
+          if (store.isLoading.value) {
+            return Center(
+              child: RefreshProgressIndicator(
+                backgroundColor: cor.backgroundColor,
                 color: cor.col3Color,
               ),
-              child: Column(
-                children: [
-                  const Row(children: [Icon(Icons.search_rounded)]),
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Text(
-                      '${texto.col3} (${0})',
-                      style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.bold),
+            );
+          }
+
+          if (store.erro.value.isNotEmpty) {
+            return Center(
+              child: Text(
+                store.erro.value,
+                textAlign: TextAlign.center,
+              ),
+            );
+          }
+          if (store.state.value.isNotEmpty) {
+            return const Center(
+              child: OrderScreen(),
+            );
+          } else {
+            return Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 2, bottom: 2, right: 2, left: 2),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: cor.col1Color,
                     ),
-                  ]),
-                  Divider(
-                    color: cor.backgroundColor,
-                    thickness: 2.0,
-                  ),
-                  //OS DADOS VIRÃO AQUI
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 2, bottom: 2, right: 2),
-            child: Container(
-              width: size.width * 0.1986,
-              decoration: BoxDecoration(
-                color: cor.col4Color,
-              ),
-              child: Column(
-                children: [
-                  const Row(children: [Icon(Icons.search_rounded)]),
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Text(
-                      '${texto.col4} (${0})',
-                      style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.bold),
+                    width: size.width * 0.1986,
+                    child: Column(
+                      children: [
+                        const Row(children: [Icon(Icons.search_rounded)]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '${texto.col1} (${0})',
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ]),
+                        Divider(
+                          color: cor.backgroundColor,
+                          thickness: 2.0,
+                        ),
+
+                        //OS DADOS VIRÃO AQUI
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(top: 3, right: 3, left: 3),
+                          child: InkWell(
+                            onTap: () {
+                              _orderDetail(conext);
+                            },
+                            child: const Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 2,
+                                      child: Text(
+                                        softWrap: true,
+                                        "#${'1314'}",
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 10,
+                                      child: Text(
+                                        softWrap: true,
+                                        'CAMARAO NAU DUPLO',
+                                        textAlign: TextAlign.right,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                        flex: 2,
+                                        child: Text(
+                                          '12:19',
+                                          textAlign: TextAlign.left,
+                                        )),
+                                    Expanded(
+                                        flex: 10,
+                                        child: Text(
+                                          '0800 705 2030',
+                                          textAlign: TextAlign.right,
+                                        )),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      'R\$ 89,90',
+                                      textAlign: TextAlign.end,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ]),
-                  Divider(
-                    color: cor.backgroundColor,
-                    thickness: 2.0,
                   ),
-                  //OS DADOS VIRÃO AQUI
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 2, bottom: 2, right: 2),
-            child: Container(
-              width: size.width * 0.1986,
-              decoration: BoxDecoration(
-                color: cor.col5Color,
-              ),
-              child: Column(
-                children: [
-                  const Row(children: [Icon(Icons.search_rounded)]),
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Text(
-                      '${texto.col5} (${0})',
-                      style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 2, bottom: 2, right: 2),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: cor.col2Color,
                     ),
-                  ]),
-                  Divider(
-                    color: cor.backgroundColor,
-                    thickness: 2.0,
+                    width: size.width * 0.1986,
+                    child: Column(
+                      children: [
+                        const Row(children: [Icon(Icons.search_rounded)]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '${texto.col2} (${0})',
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ]),
+                        Divider(
+                          color: cor.backgroundColor,
+                          thickness: 2.0,
+                        ),
+                        //OS DADOS VIRÃO AQUI
+                      ],
+                    ),
                   ),
-                  //OS DADOS VIRÃO AQUI
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 2,
+                    bottom: 2,
+                    right: 2,
+                  ),
+                  child: Container(
+                    width: size.width * 0.1986,
+                    decoration: BoxDecoration(
+                      color: cor.col3Color,
+                    ),
+                    child: Column(
+                      children: [
+                        const Row(children: [Icon(Icons.search_rounded)]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '${texto.col3} (${0})',
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ]),
+                        Divider(
+                          color: cor.backgroundColor,
+                          thickness: 2.0,
+                        ),
+                        //OS DADOS VIRÃO AQUI
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 2, bottom: 2, right: 2),
+                  child: Container(
+                    width: size.width * 0.1986,
+                    decoration: BoxDecoration(
+                      color: cor.col4Color,
+                    ),
+                    child: Column(
+                      children: [
+                        const Row(children: [Icon(Icons.search_rounded)]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '${texto.col4} (${0})',
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ]),
+                        Divider(
+                          color: cor.backgroundColor,
+                          thickness: 2.0,
+                        ),
+                        //OS DADOS VIRÃO AQUI
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 2, bottom: 2, right: 2),
+                  child: Container(
+                    width: size.width * 0.1986,
+                    decoration: BoxDecoration(
+                      color: cor.col5Color,
+                    ),
+                    child: Column(
+                      children: [
+                        const Row(children: [Icon(Icons.search_rounded)]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '${texto.col5} (${0})',
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ]),
+                        Divider(
+                          color: cor.backgroundColor,
+                          thickness: 2.0,
+                        ),
+                        //OS DADOS VIRÃO AQUI
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            );
+          }
+        });
   }
 
   _bottonAppBar() {
@@ -280,6 +406,39 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
+    );
+  }
+
+  Future<void> _orderDetail(BuildContext context) {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      useRootNavigator: true,
+      useSafeArea: true,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: cor.backgroundColor,
+          title: Text(
+            'Detalhes do Pedido',
+            style: TextStyle(color: cor.textColor),
+          ),
+          content: Text(
+            'Maiores detalhes do pedido serão informados aqui.',
+            style: TextStyle(color: cor.textColor),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text(
+                'Fechar',
+                style: TextStyle(color: cor.col4Color),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

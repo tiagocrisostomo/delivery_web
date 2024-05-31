@@ -10,7 +10,7 @@ class Cores {
   Color certoColor = Colors.green;
   Color col1Color = Colors.orange.shade200;
   Color col2Color = Colors.yellow.shade200;
-  Color col3Color = Colors.green.shade200;
+  Color col3Color = Colors.green.shade400;
   Color col4Color = Colors.blue.shade200;
   Color col5Color = Colors.red.shade200;
 }

@@ -9,7 +9,7 @@ class GLOBALS {
   String? CLIBAIRRO = "CAPIM MACIO";
   String? CLIUF = "RN";
   String? CLIMUNICIPIO = "NATAL";
-  String? CLISTATUS = "Loja fechada Fora do horário programado";
+  String? CLISTATUS = "Loja fechada\nfora do horário programado";
 
   String? EMPNOME = "SPS Foods";
   String? APPNOME = "FoodService Delivery";
