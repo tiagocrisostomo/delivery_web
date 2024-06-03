@@ -1,16 +1,28 @@
-# delivery_web
 
-A new Flutter project.
+# FoodService Delivery (WEB)
 
-## Getting Started
+Aplicação web, que consulta, lista e altera o estado dos pedidos vindo vindo da vendas dos clientes no e-commerce Ifood.
 
-This project is a starting point for a Flutter application.
+## [![pytohn version](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://www.python.org/) [![flutter version](https://img.shields.io/badge/flutter%20%20-blue?style=for-the-badge&logo=flutter)](https://flutter.dev/)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Funcionalidades
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Lista os pedidos
+- Acompanha os pedidos
+- Imprime os pedidos
+- Maximisado (preferível)
+- Web
+
+
+## Autores
+
+- [@tiagocrisostomo](https://github.com/tiagocrisostomo)
+- [@helioalfreds](https://github.com/helioalfreds)
+
+
+## Screenshots
+
+![App tela principal](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App tela modal](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
