@@ -15,14 +15,14 @@ Aplicação web, que consulta, lista e altera o estado dos pedidos vindo vindo d
 - Web
 
 
-## Autores
-
-- [@tiagocrisostomo](https://github.com/tiagocrisostomo)
-- [@helioalfreds](https://github.com/helioalfreds)
-
-
 ## Screenshots
 
 ![App tela principal](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 ![App tela modal](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+
+## Autores
+
+- [@tiagocrisostomo](https://github.com/tiagocrisostomo)
+- [@helioalfreds](https://github.com/helioalfreds)
 
