@@ -159,6 +159,7 @@ class _HomeState extends State<Home> {
               ),
             );
           }
+
           if (store.state.value.isNotEmpty) {
             return const Center(
               child: OrderScreen(),
@@ -245,7 +246,7 @@ class _HomeState extends State<Home> {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     Text(
-                                      'R\$ 89,90',
+                                      'R\$ 119,90',
                                       textAlign: TextAlign.end,
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold),
@@ -256,6 +257,8 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                         ),
+                        const Text(
+                            '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -'),
                       ],
                     ),
                   ),
@@ -417,25 +420,53 @@ class _HomeState extends State<Home> {
       useSafeArea: true,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: cor.backgroundColor,
           title: Text(
             'Detalhes do Pedido',
-            style: TextStyle(color: cor.textColor),
+            style: TextStyle(color: cor.backgroundColor),
           ),
           content: Text(
             'Maiores detalhes do pedido serão informados aqui.',
-            style: TextStyle(color: cor.textColor),
+            style: TextStyle(color: cor.backgroundColor),
           ),
-          actions: <Widget>[
-            TextButton(
-              child: Text(
-                'Fechar',
-                style: TextStyle(color: cor.col4Color),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                OutlinedButton(
+                  child: Text(
+                    'Cancelar Pedido',
+                    style: TextStyle(
+                        color: Colors.amber.shade800,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () {
+                    //chama o metodo que muda o estado, cancelando do pedido.
+                    Navigator.of(context).pop();
+                  },
+                ),
+                OutlinedButton(
+                  child: Text(
+                    'Fechar',
+                    style: TextStyle(
+                        color: cor.erroColor, fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                OutlinedButton(
+                  child: Text(
+                    'Confirmar Pedido',
+                    style: TextStyle(
+                        color: cor.certoColor, fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () {
+                    //chama o metodo que muda o estado, confirmando do pedido.
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            )
           ],
         );
       },
