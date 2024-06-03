@@ -11,7 +11,6 @@ Aplicação web, que consulta, lista e altera o estado dos pedidos vindo vindo d
 - Lista os pedidos
 - Acompanha os pedidos
 - Imprime os pedidos
-- Maximisado (preferível)
 - Web
 
 
