@@ -198,7 +198,7 @@ class _HomeState extends State<Home> {
                               const EdgeInsets.only(top: 3, right: 3, left: 3),
                           child: InkWell(
                             onTap: () {
-                              _orderDetail(conext);
+                              _orderDetailPendding(conext);
                             },
                             child: const Column(
                               children: [
@@ -258,7 +258,8 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                         const Text(
-                            '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -'),
+                          '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -',
+                        ),
                       ],
                     ),
                   ),
@@ -287,6 +288,140 @@ class _HomeState extends State<Home> {
                           thickness: 2.0,
                         ),
                         //OS DADOS VIRÃO AQUI
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(top: 3, right: 3, left: 3),
+                          child: InkWell(
+                            onTap: () {
+                              _orderDetailProduction(conext);
+                            },
+                            child: const Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 2,
+                                      child: Text(
+                                        softWrap: true,
+                                        "#${'1312'}",
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 10,
+                                      child: Text(
+                                        softWrap: true,
+                                        'CAMARAO NAU DUPLO',
+                                        textAlign: TextAlign.right,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                        flex: 2,
+                                        child: Text(
+                                          '12:10',
+                                          textAlign: TextAlign.left,
+                                        )),
+                                    Expanded(
+                                        flex: 10,
+                                        child: Text(
+                                          '0800 705 2030',
+                                          textAlign: TextAlign.right,
+                                        )),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      'R\$ 119,90',
+                                      textAlign: TextAlign.end,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -',
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(top: 3, right: 3, left: 3),
+                          child: InkWell(
+                            onTap: () {
+                              _orderDetailProduction(conext);
+                            },
+                            child: const Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 2,
+                                      child: Text(
+                                        softWrap: true,
+                                        "#${'1313'}",
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 10,
+                                      child: Text(
+                                        softWrap: true,
+                                        'CAMARAO NAU INDIVIDUAL',
+                                        textAlign: TextAlign.right,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                        flex: 2,
+                                        child: Text(
+                                          '12:09',
+                                          textAlign: TextAlign.left,
+                                        )),
+                                    Expanded(
+                                        flex: 10,
+                                        child: Text(
+                                          '0800 705 2030',
+                                          textAlign: TextAlign.right,
+                                        )),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      'R\$ 89,90',
+                                      textAlign: TextAlign.end,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -',
+                        ),
                       ],
                     ),
                   ),
@@ -319,6 +454,74 @@ class _HomeState extends State<Home> {
                           thickness: 2.0,
                         ),
                         //OS DADOS VIRÃO AQUI
+
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(top: 3, right: 3, left: 3),
+                          child: InkWell(
+                            onTap: () {
+                              _orderDetailSending(conext);
+                            },
+                            child: const Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 2,
+                                      child: Text(
+                                        softWrap: true,
+                                        "#${'1309'}",
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 10,
+                                      child: Text(
+                                        softWrap: true,
+                                        'CAMARAO NAU DUPLO',
+                                        textAlign: TextAlign.right,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                        flex: 2,
+                                        child: Text(
+                                          '12:10',
+                                          textAlign: TextAlign.left,
+                                        )),
+                                    Expanded(
+                                        flex: 10,
+                                        child: Text(
+                                          '0800 705 2030',
+                                          textAlign: TextAlign.right,
+                                        )),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      'R\$ 119,90',
+                                      textAlign: TextAlign.end,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -',
+                        ),
                       ],
                     ),
                   ),
@@ -347,6 +550,74 @@ class _HomeState extends State<Home> {
                           thickness: 2.0,
                         ),
                         //OS DADOS VIRÃO AQUI
+
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(top: 3, right: 3, left: 3),
+                          child: InkWell(
+                            onTap: () {
+                              _orderDetailSending(conext);
+                            },
+                            child: const Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 2,
+                                      child: Text(
+                                        softWrap: true,
+                                        "#${'1309'}",
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 10,
+                                      child: Text(
+                                        softWrap: true,
+                                        'CAMARAO NAU DUPLO',
+                                        textAlign: TextAlign.right,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                        flex: 2,
+                                        child: Text(
+                                          '12:10',
+                                          textAlign: TextAlign.left,
+                                        )),
+                                    Expanded(
+                                        flex: 10,
+                                        child: Text(
+                                          '0800 705 2030',
+                                          textAlign: TextAlign.right,
+                                        )),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      'R\$ 119,90',
+                                      textAlign: TextAlign.end,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -',
+                        ),
                       ],
                     ),
                   ),
@@ -375,6 +646,73 @@ class _HomeState extends State<Home> {
                           thickness: 2.0,
                         ),
                         //OS DADOS VIRÃO AQUI
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(top: 3, right: 3, left: 3),
+                          child: InkWell(
+                            onTap: () {
+                              _orderDetailSending(conext);
+                            },
+                            child: const Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 2,
+                                      child: Text(
+                                        softWrap: true,
+                                        "#${'1309'}",
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 10,
+                                      child: Text(
+                                        softWrap: true,
+                                        'CAMARAO NAU DUPLO',
+                                        textAlign: TextAlign.right,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                        flex: 2,
+                                        child: Text(
+                                          '12:10',
+                                          textAlign: TextAlign.left,
+                                        )),
+                                    Expanded(
+                                        flex: 10,
+                                        child: Text(
+                                          '0800 705 2030',
+                                          textAlign: TextAlign.right,
+                                        )),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      'R\$ 119,90',
+                                      textAlign: TextAlign.end,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -',
+                        ),
                       ],
                     ),
                   ),
@@ -412,7 +750,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Future<void> _orderDetail(BuildContext context) {
+  Future<void> _orderDetailPendding(BuildContext context) {
     return showDialog<void>(
       context: context,
       barrierDismissible: true,
@@ -429,43 +767,123 @@ class _HomeState extends State<Home> {
             style: TextStyle(color: cor.backgroundColor),
           ),
           actions: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                OutlinedButton(
-                  child: Text(
-                    'Cancelar Pedido',
-                    style: TextStyle(
-                        color: Colors.amber.shade800,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  onPressed: () {
-                    //chama o metodo que muda o estado, cancelando do pedido.
-                    Navigator.of(context).pop();
-                  },
-                ),
-                OutlinedButton(
-                  child: Text(
-                    'Fechar',
-                    style: TextStyle(
-                        color: cor.erroColor, fontWeight: FontWeight.bold),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-                OutlinedButton(
-                  child: Text(
-                    'Confirmar Pedido',
-                    style: TextStyle(
-                        color: cor.certoColor, fontWeight: FontWeight.bold),
-                  ),
-                  onPressed: () {
-                    //chama o metodo que muda o estado, confirmando do pedido.
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
+            OutlinedButton(
+              child: Text(
+                'Confirmar Pedido',
+                style: TextStyle(
+                    color: cor.certoColor, fontWeight: FontWeight.bold),
+              ),
+              onPressed: () {
+                //chama o metodo que muda o estado, confirmando do pedido.
+                Navigator.of(context).pop();
+              },
+            ),
+            OutlinedButton(
+              child: Text(
+                'Fechar',
+                style: TextStyle(
+                    color: cor.erroColor, fontWeight: FontWeight.bold),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _orderDetailProduction(BuildContext context) {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      useRootNavigator: true,
+      useSafeArea: true,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Detalhes do Pedido',
+            style: TextStyle(color: cor.backgroundColor),
+          ),
+          content: Text(
+            'Maiores detalhes do pedido serão informados aqui.',
+            style: TextStyle(color: cor.backgroundColor),
+          ),
+          actions: [
+            OutlinedButton(
+              child: Text(
+                'Cancelar Pedido',
+                style: TextStyle(
+                    color: Colors.amber.shade800, fontWeight: FontWeight.bold),
+              ),
+              onPressed: () {
+                //chama o metodo que muda o estado, cancelando do pedido.
+                Navigator.of(context).pop();
+              },
+            ),
+            OutlinedButton(
+              child: Text(
+                'Imprimir',
+                style: TextStyle(
+                    color: cor.col4Color, fontWeight: FontWeight.bold),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            OutlinedButton(
+              child: Text(
+                'Fechar',
+                style: TextStyle(
+                    color: cor.erroColor, fontWeight: FontWeight.bold),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _orderDetailSending(BuildContext context) {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      useRootNavigator: true,
+      useSafeArea: true,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Detalhes do Pedido',
+            style: TextStyle(color: cor.backgroundColor),
+          ),
+          content: Text(
+            'Maiores detalhes do pedido serão informados aqui.',
+            style: TextStyle(color: cor.backgroundColor),
+          ),
+          actions: [
+            OutlinedButton(
+              child: Text(
+                'Imprimir',
+                style: TextStyle(
+                    color: cor.col4Color, fontWeight: FontWeight.bold),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            OutlinedButton(
+              child: Text(
+                'Fechar',
+                style: TextStyle(
+                    color: cor.erroColor, fontWeight: FontWeight.bold),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
             )
           ],
         );
